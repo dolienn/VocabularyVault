@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/play"
+        android:title="" />
+    <item
+        android:id="@+id/navDictionaries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/dictionaries"
+        android:title="" />
+    <item
+        android:id="@+id/navLeaderboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/leaderboard"
+        android:title="" />
+
+    <item
+        android:id="@+id/navSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/settings"
+        android:title="" />
+</menu>
