@@ -25,15 +25,6 @@ public class PlayFragment extends Fragment {
         Button playButton = view.findViewById(R.id.playButton);
         usernameText = view.findViewById(R.id.usernameText);
 
-        NavbarActivity activity = (NavbarActivity) getActivity();
-        if (activity != null) {
-            email = activity.getUserEmail();
-
-        }
-
-        String usernameSetText = "Username : " + email;
-
-        usernameText.setText(usernameSetText);
 
 
         playButton.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -165,6 +167,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void tryagain() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+            userRef.child("bestStreak").setValue(bestStreak);
+        }
+
         bestOrNot();
         Intent tryAgainIntent = new Intent(GameActivity.this, TryAgainActivity.class);
         tryAgainIntent.putExtra("Correct_Answer", ListToString(originalCorrectTranslation));

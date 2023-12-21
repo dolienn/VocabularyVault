@@ -7,17 +7,24 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
-public class NavbarActivity extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class NavbarActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
-    private String email;
+    private TextView userEmail;
+    private CircleImageView userAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +33,17 @@ public class NavbarActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavView);
         frameLayout = findViewById(R.id.frameLayout);
-
+        userEmail = findViewById(R.id.userEmail);
+        userAvatar = findViewById(R.id.userAvatar);
 
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("Email")){
-            email = intent.getStringExtra("Email");
-
-            changeFragmentWithUserData(email);
+        if (intent != null) {
+            String userEmailString = intent.getStringExtra("user_email");
+            String userPhotoUrl = intent.getStringExtra("user_photo_url");
+            userEmail.setText(userEmailString);
+            Picasso.get().load(userPhotoUrl).into(userAvatar);
         }
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,20 +81,6 @@ public class NavbarActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void changeFragmentWithUserData(String email) {
-        PlayFragment playFragment = new PlayFragment();
 
-        Bundle bundle = new Bundle();
-        bundle.putString("Email", email);
-        playFragment.setArguments(bundle);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, playFragment)
-                .addToBackStack(null)
-                .commit();
-    }
-
-    public String getUserEmail() {
-        return email;
-    }
 }

@@ -25,9 +25,6 @@
             android:name=".GameActivity"
             android:exported="false" />
         <activity
-            android:name=".PlayActivity"
-            android:exported="false" />
-        <activity
             android:name=".TryAgainActivity"
             android:exported="false" />
         <activity
@@ -39,6 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

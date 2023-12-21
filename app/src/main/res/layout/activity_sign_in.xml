@@ -26,10 +26,11 @@
         android:layout_height="wrap_content"
         android:text="nickname"/>
     
-    <TextView
+    <Button
         android:layout_width="310dp"
         android:layout_height="48dp"
         android:id="@+id/singInWithGoogle"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
