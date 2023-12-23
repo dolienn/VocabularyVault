@@ -8,23 +8,6 @@
     android:orientation="vertical"
     tools:context=".NavbarActivity">
 
-    <TextView
-        android:id="@+id/userEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/userAvatar"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        app:civ_border_width="2dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        app:civ_border_color="#FF000000"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        android:contentDescription="Avatar" />
-
-
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"

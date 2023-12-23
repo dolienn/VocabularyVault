@@ -30,24 +30,24 @@ public class TryAgainActivity extends AppCompatActivity {
 
         ImageButton cancelButton = findViewById(R.id.cancelButton);
 
-        if (intent != null && intent.hasExtra("Correct_Answer") && intent.hasExtra("Counter") && intent.hasExtra("Best_Streak")) {
+        if (intent != null && intent.hasExtra("Correct_Answer") && intent.hasExtra("Score") && intent.hasExtra("Best_Score")) {
             String message = intent.getStringExtra("Correct_Answer");
-            String counter = intent.getStringExtra("Counter");
-            String bestStreakEnd = intent.getStringExtra("Best_Streak");
+            String score = intent.getStringExtra("Score");
+            String bestScoreEnd = intent.getStringExtra("Best_Score");
 
 
             TextView textView = findViewById(R.id.correctAnswerText);
-            TextView counterEndText = findViewById(R.id.counterEndText);
-            TextView bestStreakEndText = findViewById(R.id.bestStreakEndText);
+            TextView scoreEndText = findViewById(R.id.scoreEndText);
+            TextView bestScoreEndText = findViewById(R.id.bestScoreEndText);
             textView.setText(message);
-            counterEndText.setText(counter);
-            bestStreakEndText.setText(bestStreakEnd);
+            scoreEndText.setText(score);
+            bestScoreEndText.setText(bestScoreEnd);
         }
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playActivityIntent = new Intent(TryAgainActivity.this, MainActivity.class);
+                Intent playActivityIntent = new Intent(TryAgainActivity.this, NavbarActivity.class);
                 startActivity(playActivityIntent);
                 finish();
             }

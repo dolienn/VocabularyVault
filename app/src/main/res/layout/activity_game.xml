@@ -7,7 +7,7 @@
     tools:context=".GameActivity">
 
     <TextView
-        android:id="@+id/counterText"
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bestStreakText"
+        android:id="@+id/bestScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
