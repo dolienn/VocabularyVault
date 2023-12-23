@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,15 +23,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
     Button googleAuth;
     FirebaseAuth auth;
     FirebaseDatabase database;
+    private DatabaseReference mDatabase;
     GoogleSignInClient mGoogleSignInClient;
+
     int RC_SIGN_IN = 20;
     private boolean isLoggingOut = false;
 
@@ -45,7 +45,9 @@ public class SignInActivity extends AppCompatActivity {
         googleAuth = findViewById(R.id.singInWithGoogle);
 
         auth = FirebaseAuth.getInstance();
+
         database = FirebaseDatabase.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -53,27 +55,13 @@ public class SignInActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        googleAuth.setOnClickListener(v -> googleSignIn());
+
         if(auth.getCurrentUser() != null) {
-            HashMap<String, Object> map = new HashMap<>();
-
-            map.put("id", auth.getCurrentUser().getUid());
-            map.put("name", auth.getCurrentUser().getDisplayName());
-            map.put("profile", auth.getCurrentUser().getPhotoUrl().toString());
-
-            database.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(map);
             Intent intent = new Intent(SignInActivity.this, NavbarActivity.class);
-            intent.putExtra("user_email", auth.getCurrentUser().getEmail());
-            intent.putExtra("user_photo_url", auth.getCurrentUser().getPhotoUrl().toString());
             startActivity(intent);
             finish();
         }
-
-        googleAuth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                googleSignIn();
-            }
-        });
     }
 
     private void googleSignIn(){
@@ -106,21 +94,23 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = auth.getCurrentUser();
+                                FirebaseUser user = auth.getCurrentUser();
+                                AuthResult authResult = task.getResult();
+                                if (authResult != null && authResult.getAdditionalUserInfo() != null) {
+                                    boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();
 
-                            HashMap<String, Object> map = new HashMap<>();
+                                    if (isNewUser) {
+                                        User userData = writeNewUser(user.getUid(), user.getDisplayName(), user.getPhotoUrl().toString(), 0);
+                                        mDatabase.child("users").child(user.getUid()).setValue(userData);
+                                        Toast.makeText(SignInActivity.this, "Nowy użytkownik zalogowany po raz pierwszy", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // Użytkownik już wcześniej się zalogował
+                                        Toast.makeText(SignInActivity.this, "Użytkownik już wcześniej zalogowany", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
 
-                            map.put("id", user.getUid());
-                            map.put("name", user.getDisplayName());
-                            map.put("profile", user.getPhotoUrl().toString());
-
-                            database.getReference().child("users").child(user.getUid()).setValue(map);
 
                             Intent intent = new Intent(SignInActivity.this, NavbarActivity.class);
-                            intent.putExtra("user_email", user.getEmail());
-                            intent.putExtra("user_photo_url", user.getPhotoUrl().toString());
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -128,5 +118,12 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public User writeNewUser(String userId, String userName, String userProfile, int userBestScore) {
+        User user = new User(userName, userProfile, userBestScore);
+
+        mDatabase.child("users").child(userId).setValue(user);
+        return user;
     }
 }

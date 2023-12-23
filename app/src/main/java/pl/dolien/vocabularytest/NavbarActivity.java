@@ -13,9 +13,16 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -23,26 +30,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class NavbarActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
-    private TextView userEmail;
-    private CircleImageView userAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navbar);
+        setContentView(R.layout.activity_navbar);;
 
         bottomNavigationView = findViewById(R.id.bottomNavView);
         frameLayout = findViewById(R.id.frameLayout);
-        userEmail = findViewById(R.id.userEmail);
-        userAvatar = findViewById(R.id.userAvatar);
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String userEmailString = intent.getStringExtra("user_email");
-            String userPhotoUrl = intent.getStringExtra("user_photo_url");
-            userEmail.setText(userEmailString);
-            Picasso.get().load(userPhotoUrl).into(userAvatar);
-        }
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -80,7 +76,4 @@ public class NavbarActivity extends AppCompatActivity{
 
         fragmentTransaction.commit();
     }
-
-
-
 }
