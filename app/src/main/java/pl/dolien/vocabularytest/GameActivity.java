@@ -1,5 +1,6 @@
 package pl.dolien.vocabularytest;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -9,12 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,15 +40,18 @@ public class GameActivity extends AppCompatActivity {
     Button acceptButton;
     TextView correct;
     List<String> word;
-    TextView counterText;
-    TextView bestStreakText;
+    TextView scoreText;
+    TextView bestScoreText;
 
-    public int bestStreak;
+    public int bestScore = 0;
+
+    FirebaseAuth auth;
+    FirebaseDatabase database;
 
 
     List<String> correctTranslation;
 
-    int counter = 0;
+    int score = 0;
     int randomIndex;
 
     List<String> originalCorrectTranslation;
@@ -56,6 +64,9 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
         MyJsonReader myJsonReader = new MyJsonReader();
         List<Word> words = myJsonReader.readJsonFile(this, "vocabularyList.json");
 
@@ -64,16 +75,16 @@ public class GameActivity extends AppCompatActivity {
             userAnswer = findViewById(R.id.userAnswer);
             acceptButton = findViewById(R.id.acceptButton);
             correct = findViewById(R.id.correct);
-            counterText = findViewById(R.id.counterText);
-            bestStreakText = findViewById(R.id.bestStreakText);
-            bestStreak = Counter.loadCounter(this);
+            scoreText = findViewById(R.id.scoreText);
+            bestScoreText = findViewById(R.id.bestScoreText);
 
-
-            bestStreakText.setText(String.valueOf(bestStreak));
-            counterText.setText(String.valueOf(counter));
-
+            if (auth.getCurrentUser() != null) {
+                redirectToMainActivity(auth.getCurrentUser().getUid());
+            }
+            scoreText.setText(String.valueOf(score));
 
             game(words);
+
 
             originalCorrectTranslation = new ArrayList<>(correctTranslation);
 
@@ -138,8 +149,8 @@ public class GameActivity extends AppCompatActivity {
         if (correctTranslation.contains(userAnswer.getText().toString().trim())) {
             correct.setText("Poprawna odpowiedz");
             acceptButton.setText("Generate");
-            counter++;
-            counterText.setText(String.valueOf(counter));
+            score++;
+            scoreText.setText(String.valueOf(score));
             bestOrNot();
         } else {
             tryagain();
@@ -153,8 +164,8 @@ public class GameActivity extends AppCompatActivity {
             if (originalCorrectTranslation.contains(userAnswer.getText().toString().trim())) {
                 correct.setText("Poprawna odpowiedz. Napisz alternatywe");
                 acceptButton.setText("Accept");
-                counter++;
-                counterText.setText(String.valueOf(counter));
+                score++;
+                scoreText.setText(String.valueOf(score));
                 bestOrNot();
                 originalCorrectTranslation.remove(userAnswer.getText().toString().trim());
             } else {
@@ -171,14 +182,13 @@ public class GameActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-            userRef.child("bestStreak").setValue(bestStreak);
+            userRef.child("userBestScore").setValue(bestScore);
         }
 
-        bestOrNot();
         Intent tryAgainIntent = new Intent(GameActivity.this, TryAgainActivity.class);
         tryAgainIntent.putExtra("Correct_Answer", ListToString(originalCorrectTranslation));
-        tryAgainIntent.putExtra("Counter", String.valueOf(counter));
-        tryAgainIntent.putExtra("Best_Streak", String.valueOf(bestStreak));
+        tryAgainIntent.putExtra("Score", String.valueOf(score));
+        tryAgainIntent.putExtra("Best_Score", String.valueOf(bestScore));
         startActivity(tryAgainIntent);
         finish();
     }
@@ -197,10 +207,33 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void bestOrNot(){
-        if(counter > bestStreak) {
-            bestStreak = counter;
-            bestStreakText.setText(String.valueOf(counter));
-            Counter.saveCounter(this, counter);
+        if(score > bestScore) {
+            bestScore = score;
+            bestScoreText.setText(String.valueOf(score));
         }
+    }
+
+    private void redirectToMainActivity(String userId) {
+        DatabaseReference userReference = database.getReference().child("users").child(userId);
+
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Integer bestScoreData = dataSnapshot.child("userBestScore").getValue(Integer.class);
+
+                    if(bestScoreData != null){
+                        bestScore = bestScoreData;
+                    }
+                    bestScoreText.setText(String.valueOf(bestScore));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+                Toast.makeText(GameActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
