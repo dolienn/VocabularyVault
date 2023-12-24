@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -39,7 +40,9 @@ public class GameActivity extends AppCompatActivity {
     EditText userAnswer;
     Button acceptButton;
     TextView correct;
+    TextView answers;
     List<String> word;
+    List<List<String>> wordSynonyms;
     TextView scoreText;
     TextView bestScoreText;
 
@@ -49,12 +52,10 @@ public class GameActivity extends AppCompatActivity {
     FirebaseDatabase database;
 
 
-    List<String> correctTranslation;
+    List<List<String>> correctTranslations;
 
     int score = 0;
     int randomIndex;
-
-    List<String> originalCorrectTranslation;
 
     boolean gameOrCheck = true;
     boolean multiAnswer = true;
@@ -77,6 +78,7 @@ public class GameActivity extends AppCompatActivity {
             correct = findViewById(R.id.correct);
             scoreText = findViewById(R.id.scoreText);
             bestScoreText = findViewById(R.id.bestScoreText);
+            answers = findViewById(R.id.answers);
 
             if (auth.getCurrentUser() != null) {
                 redirectToMainActivity(auth.getCurrentUser().getUid());
@@ -85,23 +87,16 @@ public class GameActivity extends AppCompatActivity {
 
             game(words);
 
-
-            originalCorrectTranslation = new ArrayList<>(correctTranslation);
-
-            acceptButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!gameOrCheck) {
-                        game(words);
-                        originalCorrectTranslation = new ArrayList<>(correctTranslation);
-                        gameOrCheck = true;
+            acceptButton.setOnClickListener(v -> {
+                if (!gameOrCheck) {
+                    game(words);
+                    gameOrCheck = true;
+                } else {
+                    if (multiAnswer && correctTranslations.size() > 1) {
+                        multiplayCorrectTranslation();
                     } else {
-                        if (multiAnswer && originalCorrectTranslation.size() > 1) {
-                            multiplayCorrectTranslation();
-                        } else {
-                            checkAnswer();
-                            gameOrCheck = false;
-                        }
+                        checkAnswer();
+                        gameOrCheck = false;
                     }
                 }
             });
@@ -117,6 +112,7 @@ public class GameActivity extends AppCompatActivity {
         correct.setText("");
         multiAnswer=true;
 
+
         if(usedTranslations.size() < words.size()*2){
             do {
                 translationDirection = random.nextInt(2);
@@ -124,9 +120,9 @@ public class GameActivity extends AppCompatActivity {
                 randomIndex = random.nextInt(words.size());
 
                 if (translationDirection == 0) {
-                    word = words.get(randomIndex).getEnglish();
+                    wordSynonyms = words.get(randomIndex).getEnglish();
                 } else {
-                    word = words.get(randomIndex).getPolish();
+                    wordSynonyms = words.get(randomIndex).getPolish();
                 }
             } while (usedTranslations.contains(new TranslationPair(words.get(randomIndex).getEnglish(), words.get(randomIndex).getPolish())) || usedTranslations.contains(new TranslationPair(words.get(randomIndex).getPolish(), words.get(randomIndex).getEnglish())));
 
@@ -134,25 +130,33 @@ public class GameActivity extends AppCompatActivity {
             usedTranslations.add(new TranslationPair(words.get(randomIndex).getPolish(), words.get(randomIndex).getEnglish()));
 
             if (translationDirection == 0) {
-                correctTranslation = words.get(randomIndex).getPolish();
+                correctTranslations = words.get(randomIndex).getPolish();
             } else {
-                correctTranslation = words.get(randomIndex).getEnglish();
+                correctTranslations = words.get(randomIndex).getEnglish();
             }
 
-            wordText.setText(ListToString(word));
+            wordText.setText(ListToStringConverter.listListToString(wordSynonyms));
         } else {
             correct.setText("Congratulations");
         }
     }
 
     public void checkAnswer() {
-        if (correctTranslation.contains(userAnswer.getText().toString().trim())) {
-            correct.setText("Poprawna odpowiedz");
-            acceptButton.setText("Generate");
-            score++;
-            scoreText.setText(String.valueOf(score));
-            bestOrNot();
-        } else {
+        boolean lose = false;
+        for (List<String> translation : correctTranslations) {
+            if (translation.contains(userAnswer.getText().toString().trim())) {
+                correct.setText("Poprawna odpowiedz");
+                acceptButton.setText("Generate");
+                score++;
+                scoreText.setText(String.valueOf(score));
+                bestOrNot();
+                lose = false;
+                break;
+            } else {
+                lose = true;
+            }
+        }
+        if(lose){
             tryagain();
         }
         userAnswer.setText("");
@@ -160,20 +164,32 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void multiplayCorrectTranslation(){
-        if(!originalCorrectTranslation.isEmpty()){
-            if (originalCorrectTranslation.contains(userAnswer.getText().toString().trim())) {
-                correct.setText("Poprawna odpowiedz. Napisz alternatywe");
-                acceptButton.setText("Accept");
-                score++;
-                scoreText.setText(String.valueOf(score));
-                bestOrNot();
-                originalCorrectTranslation.remove(userAnswer.getText().toString().trim());
-            } else {
+        boolean lose = false;
+        if (!correctTranslations.isEmpty()) {
+            for (List<String> translation : correctTranslations) {
+                if (translation.contains(userAnswer.getText().toString().trim())) {
+                    correct.setText("Poprawna odpowiedz. Napisz alternatywe");
+                    acceptButton.setText("Accept");
+                    score++;
+                    scoreText.setText(String.valueOf(score));
+                    bestOrNot();
+                    correctTranslations.remove(translation);
+                    answers.setText(ListToStringConverter.listListToString(correctTranslations));
+
+                    lose = false;
+                    break;
+                } else {
+                    lose = true;
+                }
+            }
+
+            if (lose) {
                 tryagain();
             }
         } else {
-            multiAnswer=false;
+            multiAnswer = false;
         }
+
         userAnswer.setText("");
     }
 
@@ -186,24 +202,11 @@ public class GameActivity extends AppCompatActivity {
         }
 
         Intent tryAgainIntent = new Intent(GameActivity.this, TryAgainActivity.class);
-        tryAgainIntent.putExtra("Correct_Answer", ListToString(originalCorrectTranslation));
+        tryAgainIntent.putExtra("Correct_Answer", ListToStringConverter.listListToString(correctTranslations));
         tryAgainIntent.putExtra("Score", String.valueOf(score));
         tryAgainIntent.putExtra("Best_Score", String.valueOf(bestScore));
         startActivity(tryAgainIntent);
         finish();
-    }
-
-    public String ListToString(List<String> list){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String element : list) {
-            stringBuilder.append(element).append(", ");
-        }
-
-        if (stringBuilder.length() > 0) {
-            stringBuilder.setLength(stringBuilder.length() - 2);
-        }
-
-        return stringBuilder.toString();
     }
 
     public void bestOrNot(){

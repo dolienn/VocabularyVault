@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class TranslationPair {
-    private List<String> source;
-    private List<String> target;
+    private List<List<String>> source;
+    private List<List<String>> target;
 
-    public TranslationPair(List<String> source, List<String> target) {
+    public TranslationPair(List<List<String>> source, List<List<String>> target) {
         this.source = source;
         this.target = target;
     }
