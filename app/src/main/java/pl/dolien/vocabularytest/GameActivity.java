@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,16 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
@@ -41,12 +35,12 @@ public class GameActivity extends AppCompatActivity {
     Button acceptButton;
     TextView correct;
     TextView answers;
-    List<String> word;
     List<List<String>> wordSynonyms;
     TextView scoreText;
     TextView bestScoreText;
-
-    public int bestScore = 0;
+    String defaultValue = "all_topics.json";
+    private String fileName;
+    private int bestScore = 0;
 
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -56,7 +50,6 @@ public class GameActivity extends AppCompatActivity {
 
     int score = 0;
     int randomIndex;
-
     boolean gameOrCheck = true;
     boolean multiAnswer = true;
 
@@ -69,7 +62,9 @@ public class GameActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         MyJsonReader myJsonReader = new MyJsonReader();
-        List<Word> words = myJsonReader.readJsonFile(this, "vocabularyList.json");
+        SharedPreferences preferences = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
+        fileName = preferences.getString("FILENAME", defaultValue);
+        List<Word> words = myJsonReader.readJsonFile(this, fileName);
 
         if(words != null && !words.isEmpty()) {
             wordText = findViewById(R.id.wordText);
@@ -196,9 +191,11 @@ public class GameActivity extends AppCompatActivity {
     public void tryagain() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-            userRef.child("userBestScore").setValue(bestScore);
+            Toast.makeText(this, "userBestScore_" + fileName.substring(0, fileName.length() - 5), Toast.LENGTH_SHORT).show();
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+                userRef.child("userBestScore_" + fileName.substring(0, fileName.length() - 5)).setValue(bestScore);
         }
 
         Intent tryAgainIntent = new Intent(GameActivity.this, TryAgainActivity.class);
@@ -223,7 +220,9 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Integer bestScoreData = dataSnapshot.child("userBestScore").getValue(Integer.class);
+                    Toast.makeText(GameActivity.this, "userBestScore_" + fileName.substring(0, fileName.length() - 5), Toast.LENGTH_SHORT).show();
+                    String scoreTopicName = "userBestScore_" + fileName.substring(0, fileName.length() - 4);
+                    Integer bestScoreData = dataSnapshot.child("userBestScore_" + fileName.substring(0, fileName.length() - 5)).getValue(Integer.class);
 
                     if(bestScoreData != null){
                         bestScore = bestScoreData;

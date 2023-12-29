@@ -67,7 +67,7 @@ public class LeaderboardActivity extends AppCompatActivity {
 
                 for (DataSnapshot reversedSnapshot : userSnapshots) {
                     String userNameData = reversedSnapshot.child("userName").getValue(String.class);
-                    Integer userBestScoreData = reversedSnapshot.child("userBestScore").getValue(Integer.class);
+                    Integer userBestScoreData = reversedSnapshot.child("userBestScore_all_topics").getValue(Integer.class);
                     userList.add(userNameData + "       " + userBestScoreData);
                 }
 

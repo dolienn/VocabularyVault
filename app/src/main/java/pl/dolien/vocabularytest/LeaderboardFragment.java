@@ -43,6 +43,7 @@ public class LeaderboardFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), LeaderboardActivity.class);
         startActivity(intent);
+        getActivity().finish();
 
         return view;
     }

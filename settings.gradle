@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VocabularyTest"
+rootProject.name = "Vocabulary Valut"
 include ':app'
