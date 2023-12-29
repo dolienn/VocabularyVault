@@ -100,7 +100,7 @@ public class SignInActivity extends AppCompatActivity {
                                     boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();
 
                                     if (isNewUser) {
-                                        User userData = writeNewUser(user.getUid(), user.getDisplayName(), user.getPhotoUrl().toString(), 0);
+                                        User userData = writeNewUser(user.getUid(), user.getDisplayName(), user.getPhotoUrl().toString(), 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,0,0,0,0,0);
                                         mDatabase.child("users").child(user.getUid()).setValue(userData);
                                         Toast.makeText(SignInActivity.this, "Nowy użytkownik zalogowany po raz pierwszy", Toast.LENGTH_SHORT).show();
                                     } else {
@@ -120,8 +120,19 @@ public class SignInActivity extends AppCompatActivity {
                 });
     }
 
-    public User writeNewUser(String userId, String userName, String userProfile, int userBestScore) {
-        User user = new User(userName, userProfile, userBestScore);
+    public User writeNewUser(String userId, String userName, String userProfile,  int userBestScore_all_topics, int userBestScore_eighth_grade,
+                             int userBestScore_human, int userBestScore_home, int userBestScore_education,
+                             int userBestScore_job, int userBestScore_private_life, int userBestScore_nutrition,
+                             int userBestScore_shopping_and_services, int userBestScore_travel_and_tourism,
+                             int userBestScore_culture, int userBestScore_sport, int userBestScore_health,
+                             int userBestScore_science_and_technology, int userBestScore_world_of_adventure,
+                             int userBestScore_state_and_society) {
+        User user = new User(userName, userProfile, userBestScore_all_topics, userBestScore_eighth_grade,
+                userBestScore_human, userBestScore_home, userBestScore_education, userBestScore_job,
+                userBestScore_private_life, userBestScore_nutrition, userBestScore_shopping_and_services,
+                userBestScore_travel_and_tourism, userBestScore_culture, userBestScore_sport,
+                userBestScore_health, userBestScore_science_and_technology, userBestScore_world_of_adventure,
+                userBestScore_state_and_society);
 
         mDatabase.child("users").child(userId).setValue(user);
         return user;
