@@ -1,6 +1,683 @@
 [
-  {"english": [["vocabulary2"]], "polish": [["xd"]]},
-  {"english": [["ale"]], "polish": [["jajca"]]},
-  {"english": [["sraka"]], "polish": [["glowno"]]},
-  {"english": [["xpp"]], "polish": [["xdd"]]}
+  {"english": [["address"]], "polish": [["adres"]]},
+
+  {"english": [["email"]], "polish": [["adres e-mail"]]},
+
+  {"english": [["postal address"]], "polish": [["adres pocztowy"]]},
+
+  {"english": [["age"]], "polish": [["wiek"]]},
+
+  {"english": [["birth"]], "polish": [["narodziny"]]},
+
+  {"english": [["date of birth"]], "polish": [["data urodzenia"]]},
+
+  {"english": [["place of birth"]], "polish": [["miejsce urodzenia"]]},
+
+  {"english": [["citizen"]], "polish": [["obywatel, obywatelka"]]},
+
+  {"english": [["divorced"]], "polish": [["rozwiedziony"]]},
+
+  {"english": [["family name"]], "polish": [["nazwisko"]]},
+
+  {"english": [["female"]], "polish": [["kobieta, żeński"]]},
+
+  {"english": [["first name"]], "polish": [["imię"]]},
+
+  {"english": [["ID"]], "polish": [["dokument tożsamości"]]},
+
+  {"english": [["ID number"]], "polish": [["numer dokumentu tożsamości", "numer tożsamości"]]},
+
+  {"english": [["male"]], "polish": [["mężczyzna, męski"]]},
+
+  {"english": [["marital status"]], "polish": [["stan cywilny"]]},
+
+  {"english": [["married"]], "polish": [["żonaty, zamężna"]]},
+
+  {"english": [["mobile phone number, phone number"]], "polish": [["numer telefonu komórkowego, numer telefonu"]]},
+
+  {"english": [["nationality"]], "polish": [["narodowość"]]},
+
+  {"english": [["occupation"]], "polish": [["zawód"]]},
+
+  {"english": [["passport number"]], "polish": [["numer paszportu"]]},
+
+  {"english": [["sex"]], "polish": [["płeć"]]},
+
+  {"english": [["single"]], "polish": [["stanu wolnego"]]},
+
+  {"english": [["surname"]], "polish": [["nazwisko"]]},
+
+  {"english": [["widow"]], "polish": [["wdowa"]]},
+
+  {"english": [["widower"]], "polish": [["wdowiec"]]},
+
+  {"english": [["adolescent"]], "polish": [["osoba w wieku dojrzewania", "dojrzewająca osoba", "osoba dojrzewająca"]]},
+
+  {"english": [["adult"]], "polish": [["dorosły, osoba dorosła"]]},
+
+  {"english": [["age group"]], "polish": [["grupa wiekowa"]]},
+
+  {"english": [["at the age of"]], "polish": [["w wieku"]]},
+
+  {"english": [["baby"]], "polish": [["dziecko, niemowlę"]]},
+
+  {"english": [["child"]], "polish": [["dziecko"]]},
+
+  {"english": [["childhood"]], "polish": [["dzieciństwo"]]},
+
+  {"english": [["dead"]], "polish": [["martwy"]]},
+
+  {"english": [["death"]], "polish": [["śmierć"]]},
+
+  {"english": [["elderly"]], "polish": [["w starszym wieku, starszy, osoby starsze, starsi"]]},
+
+  {"english": [["generation"]], "polish": [["pokolenie"]]},
+
+  {"english": [["grow older"]], "polish": [["starzeć się"]]},
+
+  {"english": [["grow up"]], "polish": [["dorastać"]]},
+
+  {"english": [["grown-up"]], "polish": [["dorosły, osoba dorosła"]]},
+
+  {"english": [["in his early twenties, in her early twenties"]], "polish": [["po dwudziestce"]]},
+
+  {"english": [["in his late thirties, in her late thirties"]], "polish": [["przed czterdziestką"]]},
+
+  {"english": [["in his mid-fifties, in her mid-fifties"]], "polish": [["w wieku około pięćdziesięciu pięciu lat"]]},
+
+  {"english": [["infant"]], "polish": [["niemowlę, małe dziecko"]]},
+
+  {"english": [["kid"]], "polish": [["dzieciak"]]},
+
+  {"english": [["middle age"]], "polish": [["wiek średni"]]},
+
+  {"english": [["middle-aged"]], "polish": [["w średnim wieku"]]},
+
+  {"english": [["old age"]], "polish": [["starość"]]},
+
+  {"english": [["over twenty"]], "polish": [["po dwudziestce"]]},
+
+  {"english": [["teenager"]], "polish": [["nastolatek, nastolatka"]]},
+
+  {"english": [["young"]], "polish": [["młody"]]},
+
+  {"english": [["youth"]], "polish": [["młodość"]]},
+
+  {"english": [["ageing"]], "polish": [["starzejący się"]]},
+
+  {"english": [["be in your prime"]], "polish": [["być w kwiecie wieku"]]},
+
+  {"english": [["be on your deathbed"]], "polish": [["być na łożu śmierci"]]},
+
+  {"english": [["minor"]], "polish": [["osoba nieletnia"]]},
+
+  {"english": [["pass away"]], "polish": [["umrzeć"]]},
+
+  {"english": [["pensioner"]], "polish": [["emeryt, emerytka"]]},
+
+  {"english": [["toddler"]], "polish": [["kilkulatek"]]},
+
+  {"english": [["turn eighteen"]], "polish": [["skończyć osiemnaście lat"]]},
+
+  {"english": [["attractive"]], "polish": [["atrakcyjny"]]},
+
+  {"english": [["beautiful"]], "polish": [["piękny"]]},
+
+  {"english": [["good-looking"]], "polish": [["przystojny, atrakcyjny"]]},
+
+  {"english": [["plain"]], "polish": [["przeciętny"]]},
+
+  {"english": [["pretty"]], "polish": [["ładny"]]},
+
+  {"english": [["foot"]], "polish": [["stopa"]]},
+
+  {"english": [["inch"]], "polish": [["cal"]]},
+
+  {"english": [["of medium height"]], "polish": [["średniego wzrostu"]]},
+
+  {"english": [["short"]], "polish": [["niski"]]},
+
+  {"english": [["tall"]], "polish": [["wysoki"]]},
+
+  {"english": [["athletic build"]], "polish": [["sportowa sylwetka"]]},
+
+  {"english": [["broad shoulders"]], "polish": [["szerokie ramiona"]]},
+
+  {"english": [["overweight"]], "polish": [["z nadwagą"]]},
+
+  {"english": [["plump"]], "polish": [["puszysty"]]},
+
+  {"english": [["skinny"]], "polish": [["bardzo chudy, chudy"]]},
+
+  {"english": [["slim"]], "polish": [["szczupły"]]},
+
+  {"english": [["thin"]], "polish": [["chudy"]]},
+
+  {"english": [["well-built"]], "polish": [["dobrze zbudowany"]]},
+
+  {"english": [["beard"]], "polish": [["broda"]]},
+
+  {"english": [["cheek"]], "polish": [["policzek"]]},
+
+  {"english": [["pale cheeks"]], "polish": [["blade policzki"]]},
+
+  {"english": [["pink cheeks"]], "polish": [["różowe policzki"]]},
+
+  {"english": [["chin"]], "polish": [["podbródek"]]},
+
+  {"english": [["complexion"]], "polish": [["cera"]]},
+
+  {"english": [["dark complexion"]], "polish": [["ciemna cera"]]},
+
+  {"english": [["pale complexion"]], "polish": [["blada cera"]]},
+
+  {"english": [["rosy complexion"]], "polish": [["rumiana cera"]]},
+
+  {"english": [["tanned complexion"]], "polish": [["opalona cera"]]},
+
+  {"english": [["dark circles under your eyes"]], "polish": [["cienie pod oczami, podkrążone oczy"]]},
+
+  {"english": [["eyebrow"]], "polish": [["brew"]]},
+
+  {"english": [["forehead"]], "polish": [["czoło"]]},
+
+  {"english": [["freckles"]], "polish": [["piegi"]]},
+
+  {"english": [["lip"]], "polish": [["warga"]]},
+
+  {"english": [["full lips"]], "polish": [["pełne usta"]]},
+
+  {"english": [["lower lip"]], "polish": [["dolna warga"]]},
+
+  {"english": [["top lip"]], "polish": [["górna warga"]]},
+
+  {"english": [["lovely smile"]], "polish": [["uroczy uśmiech"]]},
+
+  {"english": [["moustache"]], "polish": [["wąsy"]]},
+
+  {"english": [["mouth"]], "polish": [["usta"]]},
+
+  {"english": [["tongue"]], "polish": [["język"]]},
+
+  {"english": [["tooth"]], "polish": [["ząb"]]},
+
+  {"english": [["teeth"]], "polish": [["zęby"]]},
+
+  {"english": [["wrinkles"]], "polish": [["zmarszczki"]]},
+
+  {"english": [["bald"]], "polish": [["łysy"]]},
+
+  {"english": [["curly"]], "polish": [["kręcone, kręcony"]]},
+
+  {"english": [["dyed"]], "polish": [["farbowane, farbowany"]]},
+
+  {"english": [["fair"]], "polish": [["jasne, jasny"]]},
+
+  {"english": [["fringe"]], "polish": [["grzywka"]]},
+
+  {"english": [["go bald"]], "polish": [["łysieć"]]},
+
+  {"english": [["grey"]], "polish": [["siwe, siwy, szare, szary"]]},
+
+  {"english": [["ponytail"]], "polish": [["kucyk"]]},
+
+  {"english": [["shiny"]], "polish": [["lśniące, lśniący"]]},
+
+  {"english": [["short"]], "polish": [["krótkie, krótki"]]},
+
+  {"english": [["spiky"]], "polish": [["nastroszone, sterczące, nastroszony, sterczący"]]},
+
+  {"english": [["shoulder-length"]], "polish": [["do ramion"]]},
+
+  {"english": [["straight"]], "polish": [["proste, prosto"]]},
+
+  {"english": [["waist-length"]], "polish": [["do pasa"]]},
+
+  {"english": [["wavy"]], "polish": [["faliste, falisty"]]},
+
+  {"english": [["white"]], "polish": [["siwe, siwy, białe, biały"]]},
+
+  {"english": [["look"]], "polish": [["wyglądać"]]},
+
+  {"english": [["looks"]], "polish": [["wygląd"]]},
+
+  {"english": [["put on weight"]], "polish": [["przybierać na wadze"]]},
+
+  {"english": [["tattoo"]], "polish": [["tatuaż"]]},
+
+  {"english": [["blouse"]], "polish": [["bluzka"]]},
+
+  {"english": [["bra"]], "polish": [["stanik"]]},
+
+  {"english": [["button"]], "polish": [["guzik, przycisk"]]},
+
+  {"english": [["coat"]], "polish": [["płaszcz"]]},
+
+  {"english": [["dress"]], "polish": [["sukienka"]]},
+
+  {"english": [["dress code"]], "polish": [["zasady dotyczące ubioru, zasady ubioru, zasady ubierania się"]]},
+
+  {"english": [["fleece"]], "polish": [["polar"]]},
+
+  {"english": [["hood"]], "polish": [["kaptur"]]},
+
+  {"english": [["jacket"]], "polish": [["marynarka, żakiet, kurtka"]]},
+
+  {"english": [["jeans"]], "polish": [["dżinsy"]]},
+
+  {"english": [["jumper"]], "polish": [["sweter"]]},
+
+  {"english": [["label"]], "polish": [["metka, etykieta"]]},
+
+  {"english": [["outfit"]], "polish": [["strój"]]},
+
+  {"english": [["pocket"]], "polish": [["kieszeń"]]},
+
+  {"english": [["pyjamas"]], "polish": [["piżama"]]},
+
+  {"english": [["shirt"]], "polish": [["koszula"]]},
+
+  {"english": [["skirt"]], "polish": [["spódnica"]]},
+
+  {"english": [["sleeve"]], "polish": [["rękaw"]]},
+
+  {"english": [["sock"]], "polish": [["skarpetka"]]},
+
+  {"english": [["suit"]], "polish": [["garnitur"]]},
+
+  {"english": [["sweater"]], "polish": [["sweter"]]},
+
+  {"english": [["sweatshirt"]], "polish": [["bluza"]]},
+
+  {"english": [["tie"]], "polish": [["krawat"]]},
+
+  {"english": [["tights"]], "polish": [["rajstopy"]]},
+
+  {"english": [["tracksuit"]], "polish": [["dres"]]},
+
+  {"english": [["tracksuit bottoms", "tracksuit trousers"]], "polish": [["spodnie od dresu, spodnie dresowe, dresowe spodnie"]]},
+
+  {"english": [["trousers"]], "polish": [["spodnie"]]},
+
+  {"english": [["underpants"]], "polish": [["slipy"]]},
+
+  {"english": [["underwear"]], "polish": [["bielizna"]]},
+
+  {"english": [["uniform"]], "polish": [["mundur"]]},
+
+  {"english": [["school uniform"]], "polish": [["mundurek szkolny"]]},
+
+  {"english": [["zip"]], "polish": [["zamek błyskawiczny"]]},
+
+  {"english": [["hoodie"]], "polish": [["bluza z kapturem"]]},
+
+  {"english": [["joggers"]], "polish": [["wygodne spodnie, spodnie dresowe"]]},
+
+  {"english": [["loungewear"]], "polish": [["odzież domowa"]]},
+
+  {"english": [["baseball cap"]], "polish": [["czapka z daszkiem, czapka baseballowa"]]},
+
+  {"english": [["belt"]], "polish": [["pasek"]]},
+
+  {"english": [["boots"]], "polish": [["kozaki, wysokie buty, buty"]]},
+
+  {"english": [["snow boots"]], "polish": [["śniegowce, buty do śniegu"]]},
+
+  {"english": [["bracelet"]], "polish": [["bransoletka"]]},
+
+  {"english": [["briefcase"]], "polish": [["teczka, aktówka"]]},
+
+  {"english": [["earrings"]], "polish": [["kolczyki"]]},
+
+  {"english": [["flat shoes"]], "polish": [["buty na płaskim obcasie"]]},
+
+  {"english": [["glasses"]], "polish": [["okulary"]]},
+
+  {"english": [["gloves"]], "polish": [["rękawiczki"]]},
+
+  {"english": [["handbag"]], "polish": [["torebka"]]},
+
+  {"english": [["hat"]], "polish": [["kapelusz, czapka"]]},
+
+  {"english": [["high heels"]], "polish": [["buty na wysokim obcasie"]]},
+
+  {"english": [["jewellery"]], "polish": [["biżuteria"]]},
+
+  {"english": [["necklace"]], "polish": [["naszyjnik"]]},
+
+  {"english": [["piercing"]], "polish": [["piercing, kolczyk"]]},
+
+  {"english": [["sandals"]], "polish": [["sandały"]]},
+
+  {"english": [["scarf"]], "polish": [["szalik, apaszka"]]},
+
+  {"english": [["sunglasses"]], "polish": [["okulary przeciwsłoneczne"]]},
+
+  {"english": [["prescription sunglasses"]], "polish": [["korygujące okulary przeciwsłoneczne"]]},
+
+  {"english": [["trainers"]], "polish": [["buty sportowe"]]},
+
+  {"english": [["casual"]], "polish": [["nieformalny, codzienny"]]},
+
+  {"english": [["checked"]], "polish": [["w kratę"]]},
+
+  {"english": [["comfortable"]], "polish": [["wygodny, wygodne"]]},
+
+  {"english": [["uncomfortable"]], "polish": [["niewygodny, niewygodne"]]},
+
+  {"english": [["cotton"]], "polish": [["bawełniany, bawełniane"]]},
+
+  {"english": [["denim"]], "polish": [["dżinsowy, dżinsowe"]]},
+
+  {"english": [["designer"]], "polish": [["designerski, markowy"]]},
+
+  {"english": [["smart, elegant"]], "polish": [["elegancki, eleganckie"]]},
+
+  {"english": [["fashionable"]], "polish": [["modny, modne"]]},
+
+  {"english": [["unfashionable"]], "polish": [["niemodny, niemodne"]]},
+
+  {"english": [["floral"]], "polish": [["kwiecisty, kwieciste"]]},
+
+  {"english": [["formal"]], "polish": [["formalny, formalne"]]},
+
+  {"english": [["informal"]], "polish": [["nieformalny, nieformalne"]]},
+
+  {"english": [["good quality"]], "polish": [["dobrej jakości"]]},
+
+  {"english": [["in good condition"]], "polish": [["w dobrym stanie"]]},
+
+  {"english": [["khaki"]], "polish": [["w kolorze khaki"]]},
+
+  {"english": [["leather"]], "polish": [["skórzany, skórzane"]]},
+
+  {"english": [["loose"]], "polish": [["luźny, luźne"]]},
+
+  {"english": [["old-fashioned"]], "polish": [["niemodny, staromodny, niemodne, staromodne"]]},
+
+  {"english": [["patterned"]], "polish": [["wzorzysty, wzorzyste"]]},
+
+  {"english": [["poor quality"]], "polish": [["złej jakości"]]},
+
+  {"english": [["second-hand"]], "polish": [["używany, używane"]]},
+
+  {"english": [["silk"]], "polish": [["jedwabny"]]},
+
+  {"english": [["straight leg"]], "polish": [["o prostej nogawce, prosta noga"]]},
+
+  {"english": [["stunning"]], "polish": [["olśniewający, olśniewające"]]},
+
+  {"english": [["tight"]], "polish": [["obcisły, obcisłe"]]},
+
+  {"english": [["trendy"]], "polish": [["modny, modne"]]},
+
+  {"english": [["ugly"]], "polish": [["brzydki, brzydkie"]]},
+
+  {"english": [["warm"]], "polish": [["ciepły, ciepłe"]]},
+
+  {"english": [["dress"]], "polish": [["ubierać się, ubierać"]]},
+
+  {"english": [["dress up as sb", "dress up as sth", "dress up as something", "dress up as somebody"]], "polish": [["przebierać się za kogoś", "przebierać się za coś"]]},
+
+  {"english": [["fit", "match", "suit"]], "polish": [["pasować"]]},
+
+    {"english": [["get a haircut"]], "polish": [["ostrzyć się"]]},
+
+    {"english": [["get changed"]], "polish": [["przebrać się"]]},
+
+    {"english": [["get dressed"]], "polish": [["ubrać się"]]},
+
+    {"english": [["iron a shirt"]], "polish": [["wyprasować koszulę"]]},
+
+    {"english": [["polish shoes"]], "polish": [["wypastować buty"]]},
+
+    {"english": [["put on"]], "polish": [["zakładać"]]},
+
+    {"english": [["put on make-up"]], "polish": [["nakładać makijaż"]]},
+
+    {"english": [["take off"]], "polish": [["zdjąć z siebie"]]},
+
+    {"english": [["try on"]], "polish": [["przymierzyć"]]},
+
+    {"english": [["wear"]], "polish": [["nosić, mieć na sobie"]]},
+
+    {"english": [["blend into the crowd"]], "polish": [["wmieszać się w tłum"]]},
+
+    {"english": [["dress down"]], "polish": [["ubrać się mniej formalnie niż zwykle, ubrać się nieformalnie, ubrać się mniej formalnie"]]},
+
+    {"english": [["dress up"]], "polish": [["wystroić się, ubrać bardziej formalnie niż zwykle, ubrać się formalnie"]]},
+
+    {"english": [["let out"]], "polish": [["poszerzyć"]]},
+
+    {"english": [["roll up"]], "polish": [["podwinąć"]]},
+
+    {"english": [["slip on"]], "polish": [["wsunąć, narzucić"]]},
+
+    {"english": [["stand out from the crowd"]], "polish": [["wyróżniać się z tłumu"]]},
+
+    {"english": [["take in"]], "polish": [["zwęzić"]]},
+
+    {"english": [["throw on"]], "polish": [["zarzucić na siebie"]]},
+
+    {"english": [["turn up"]], "polish": [["podwinąć"]]},
+
+    {"english": [["wrap up"]], "polish": [["owinąć się, otulić"]]},
+
+  {"english": [["aggressive"]], "polish": [["agresywny"]]},
+  {"english": [["ambitious"]], "polish": [["ambitny"]]},
+  {"english": [["arrogant"]], "polish": [["arogancki"]]},
+  {"english": [["artistic"]], "polish": [["uzdolniony artystycznie"]]},
+  {"english": [["bossy"]], "polish": [["apodyktyczny"]]},
+  {"english": [["brave"]], "polish": [["odważny"]]},
+  {"english": [["bright"]], "polish": [["bysty"]]},
+  {"english": [["calm"]], "polish": [["opanowany"]]},
+  {"english": [["careful"]], "polish": [["ostrożny"]]},
+  {"english": [["careless"]], "polish": [["nieostrożny"]]},
+  {"english": [["caring"]], "polish": [["troskliwy"]]},
+  {"english": [["cheerful"]], "polish": [["radosny"]]},
+  {"english": [["clever"]], "polish": [["zdolny"]]},
+  {"english": [["cold"]], "polish": [["oschły"]]},
+  {"english": [["confident"]], "polish": [["pewny siebie"]]},
+  {"english": [["cruel"]], "polish": [["okrutny"]]},
+  {"english": [["disciplined"]], "polish": [["zdyscyplinowany"]]},
+  {"english": [["dull"]], "polish": [["nieciekawy"]]},
+  {"english": [["easy-going"]], "polish": [["wyluzowany"]]},
+  {"english": [["friendly"]], "polish": [["przyjazny"]]},
+  {"english": [["unfriendly"]], "polish": [["nieprzyjazny"]]},
+  {"english": [["funny"]], "polish": [["zabawny"]]},
+  {"english": [["generous"]], "polish": [["szczodry"]]},
+  {"english": [["gentle"]], "polish": [["łagodny"]]},
+  {"english": [["hard working"]], "polish": [["pracowity"]]},
+  {"english": [["helpful"]], "polish": [["pomocny"]]},
+  {"english": [["honest"]], "polish": [["uczciwy"]]},
+  {"english": [["impatient"]], "polish": [["niecierpliwy"]]},
+  {"english": [["independent"]], "polish": [["niezależny"]]},
+  {"english": [["insecure"]], "polish": [["niepewny"]]},
+  {"english": [["intelligent"]], "polish": [["inteligentny"]]},
+  {"english": [["kind"]], "polish": [["miły"]]},
+  {"english": [["unkind"]], "polish": [["niemiły"]]},
+  {"english": [["kind-hearted"]], "polish": [["dobrotliwy"]]},
+  {"english": [["lazy"]], "polish": [["leniwy"]]},
+  {"english": [["lively"]], "polish": [["żywiołowy"]]},
+  {"english": [["loyal"]], "polish": [["lojalny"]]},
+  {"english": [["disloyal"]], "polish": [["nielojalny"]]},
+  {"english": [["mean"]], "polish": [["podły"]]},
+  {"english": [["messy"]], "polish": [["nieporządny"]]},
+  {"english": [["modest"]], "polish": [["skromny"]]},
+  {"english": [["nasty"]], "polish": [["wstrętny"]]},
+  {"english": [["neat"]], "polish": [["schludny"]]},
+  {"english": [["ordinary"]], "polish": [["zwykły"]]},
+  {"english": [["outgoing"]], "polish": [["towarzyski"]]},
+  {"english": [["peaceful"]], "polish": [["spokojny"]]},
+  {"english": [["polite"]], "polish": [["uprzejmy"]]},
+  {"english": [["impolite"]], "polish": [["nieuprzejmy"]]},
+  {"english": [["quiet"]], "polish": [["cichy"]]},
+  {"english": [["relaxed"]], "polish": [["wyluzowany"]]},
+  {"english": [["reliable"]], "polish": [["godny zaufania"]]},
+  {"english": [["responsible"]], "polish": [["odpowiedzialny"]]},
+  {"english": [["irresponsible"]], "polish": [["nieodpowiedzialny"]]},
+  {"english": [["rude"]], "polish": [["niegrzeczny"]]},
+  {"english": [["selfish"]], "polish": [["samolubny"]]},
+  {"english": [["sensible"]], "polish": [["rozsądny"]]},
+  {"english": [["sensitive"]], "polish": [["wrażliwy"]]},
+  {"english": [["insensitive"]], "polish": [["niewrażliwy"]]},
+  {"english": [["serious"]], "polish": [["poważny"]]},
+  {"english": [["shallow"]], "polish": [["płytki"]]},
+
+  {"english": [["have a bad day"]], "polish": [["mieć zły dzień"]]},
+  {"english": [["have a good sense of humour"]], "polish": [["mieć dobre poczucie humoru"]]},
+  {"english": [["annoyed"]], "polish": [["zirytowany"]]},
+  {"english": [["annoying"]], "polish": [["irytujący"]]},
+  {"english": [["bored"]], "polish": [["znudzony"]]},
+  {"english": [["boring"]], "polish": [["nudny"]]},
+  {"english": [["depressed"]], "polish": [["załamany"]]},
+  {"english": [["depressing"]], "polish": [["przygnębiający"]]},
+  {"english": [["disappointed"]], "polish": [["rozczarowany"]]},
+  {"english": [["disappointing"]], "polish": [["rozczarowujący"]]},
+  {"english": [["embarrassed"]], "polish": [["zawstydzony"]]},
+  {"english": [["embarrassing"]], "polish": [["wprawiający w zakłopotanie"]]},
+  {"english": [["excited"]], "polish": [["podekscytowany"]]},
+  {"english": [["exciting"]], "polish": [["ekscytujący"]]},
+  {"english": [["frightened"]], "polish": [["przerażony"]]},
+  {"english": [["frightening"]], "polish": [["przerażający"]]},
+  {"english": [["frustrated"]], "polish": [["sfrustrowany"]]},
+  {"english": [["frustrating"]], "polish": [["frustrujący"]]},
+  {"english": [["moved"]], "polish": [["wzruszony"]]},
+  {"english": [["moving"]], "polish": [["wzruszający"]]},
+  {"english": [["pleased"]], "polish": [["zadowolony"]]},
+  {"english": [["puzzled"]], "polish": [["zaskoczony"]]},
+  {"english": [["stressed out"]], "polish": [["zestresowany"]]},
+  {"english": [["sociable"]], "polish": [["towarzyski"]]},
+  {"english": [["unsociable"]], "polish": [["nieprzyjazny"]]},
+  {"english": [["stubborn"]], "polish": [["uparty"]]},
+  {"english": [["talkative"]], "polish": [["gadatliwy"]]},
+  {"english": [["tolerant"]], "polish": [["tolerancyjny"]]},
+  {"english": [["intolerant"]], "polish": [["nietolerancyjny"]]},
+  {"english": [["untidy"]], "polish": [["nieporządny"]]},
+  {"english": [["violent"]], "polish": [["agresywny"]]},
+  {"english": [["wise"]], "polish": [["mądry"]]},
+  {"english": [["stressful"]], "polish": [["stresujący"]]},
+  {"english": [["surprised"]], "polish": [["zdziwiony"]]},
+  {"english": [["surprising"]], "polish": [["zadziwiający"]]},
+  {"english": [["worried"]], "polish": [["zmartwiony"]]},
+  {"english": [["worrying"]], "polish": [["martwiący"]]},
+  {"english": [["anger"]], "polish": [["złość"]]},
+  {"english": [["disapproval"]], "polish": [["dezaprobata"]]},
+  {"english": [["discomfort"]], "polish": [["dyskomfort"]]},
+  {"english": [["impatience"]], "polish": [["zniecierpliwienie"]]},
+  {"english": [["indecision"]], "polish": [["niezdecydowanie"]]},
+  {"english": [["insecurity"]], "polish": [["niepewność"]]},
+  {"english": [["irritation"]], "polish": [["irytacja"]]},
+  {"english": [["shyness"]], "polish": [["nieśmiałość"]]},
+  {"english": [["bang your fist"]], "polish": [["uderzyć pięścią"]]},
+  {"english": [["bang your first on a table"]], "polish": [["uderzyć pięścią w stół"]]},
+  {"english": [["blink"]], "polish": [["mrugać"]]},
+  {"english": [["cross your legs"]], "polish": [["skrzyżować nogi"]]},
+  {"english": [["fold your arms"]], "polish": [["skrzyżować ramiona"]]},
+  {"english": [["frown"]], "polish": [["zmarszczyć brwi"]]},
+  {"english": [["glimpse"]], "polish": [["spojrzeć przelotnie"]]},
+  {"english": [["grind your teeth"]], "polish": [["zgrzytać zębami"]]},
+  {"english": [["lose your temper"]], "polish": [["stracić panowanie nad sobą"]]},
+  {"english": [["make up your mind"]], "polish": [["zdecydować się"]]},
+  {"english": [["worry about sth"]], "polish": [["martwić się czymś"]]},
+  {"english": [["be down in the dumps"]], "polish": [["mieć chandrę"]]},
+  {"english": [["be over the moon"]], "polish": [["nie posiadać się ze szczęścia"]]},
+  {"english": [["cope with sth"]], "polish": [["radzić sobie"]]},
+  {"english": [["face up to sth"]], "polish": [["stawiać czemuś czoło"]]},
+  {"english": [["get butterflies in your stomach"]], "polish": [["mieć tremę"]]},
+  {"english": [["have a chip on your shoulder"]], "polish": [["być przewrażliwionym"]]},
+  {"english": [["lose control"]], "polish": [["stracić panowanie nad sobą"]]},
+
+  {"english": [["able"]], "polish": [["zdolny"]]},
+  {"english": [["unable"]], "polish": [["niezdolny"]]},
+  {"english": [["adore"]], "polish": [["uwielbiać"]]},
+  {"english": [["be an expert on sth", "be an expert on something"]], "polish": [["być ekspertem w jakiejś dziedzinie"]]},
+  {"english": [["be bad at something", "be terrible at something"]], "polish": [["być w czymś kiepskim", "być kiepskim w czymś"]]},
+  {"english": [["be crazy about something", "be mad about something"]], "polish": [["szaleć za czymś"]]},
+  {"english": [["purse your lips"]], "polish": [["zacisnąć usta"]]},
+  {"english": [["raise your eyebrows"]], "polish": [["unieść brwi"]]},
+  {"english": [["shrug your shoulders"]], "polish": [["wzruszyć ramionami"]]},
+  {"english": [["tap your fingers"]], "polish": [["uderzać palcami"]]},
+  {"english": [["wink at somebody"]], "polish": [["mrugnąć okiem do kogoś"]]},
+  {"english": [["be angry with somebody"]], "polish": [["być złym na kogoś"]]},
+  {"english": [["be in a bad mood"]], "polish": [["być w złym humorze"]]},
+  {"english": [["be in a good mood"]], "polish": [["być dobrym nastroju"]]},
+  {"english": [["be nervous about sth", "be nervous about something"]], "polish": [["denerwować się czymś"]]},
+  {"english": [["be fed up with somebody", "be fed up with something", "feel fed up with somebody", "feel fed up with something", "get fed up with somebody", "get fed up with something"]], "polish": [["mieć kogoś bądź coś dość"]]},
+  {"english": [["change your mind"]], "polish": [["zmienić zdanie"]]},
+  {"english": [["cheer up"]], "polish": [["rozweselić"]]},
+  {"english": [["feel like sth", "feel like something"]], "polish": [["czuć się w jakiś sposób"]]},
+  {"english": [["be fond of somebody"]], "polish": [["lubić kogoś"]]},
+  {"english": [["be fond of something"]], "polish": [["lubić coś"]]},
+  {"english": [["be good at sth", "be good at something"]], "polish": [["być w czymś dobrym"]]},
+  {"english": [["be interested in sth", "be interested in something"]], "polish": [["interesować się czymś"]]},
+  {"english": [["be into sth", "be into something"]], "polish": [["interesować się czymś"]]},
+  {"english": [["be keen on sth", "be keen on something"]], "polish": [["bardzo coś lubić"]]},
+  {"english": [["can't stand sb", "can't stand somebody", "can not stand somebody", "cant not stand somebody"]], "polish": [["nie cierpieć kogoś"]]},
+  {"english": [["can't stand sth", "can't stand something", "cant not stand something", "can not stand something"]], "polish": [["nie cierpieć czegoś"]]},
+  {"english": [["come naturally to sb", "come naturally to somebody"]], "polish": [["przychodzić komuś z łatwością"]]},
+  {"english": [["competent"]], "polish": [["kompetentny"]]},
+  {"english": [["dislike"]], "polish": [["nie lubić"]]},
+  {"english": [["enjoy"]], "polish": [["czerpać przyjemność"]]},
+  {"english": [["gifted"]], "polish": [["zdolny"]]},
+  {"english": [["skill"]], "polish": [["umiejętność"]]},
+  {"english": [["skilled"]], "polish": [["wykwalifikowany"]]},
+  {"english": [["talented"]], "polish": [["utalentowany"]]},
+  {"english": [["appeal to sb", "appeal to somebody"]], "polish": [["podobać się komuś"]]},
+  {"english": [["be familiar with sth", "be familiar with something"]], "polish": [["znać coś"]]},
+  {"english": [["capable of doing sth", "capable of doing something"]], "polish": [["zdolny do zrobienia czegoś"]]},
+  {"english": [["convinced of sth", "convinced of something"]], "polish": [["przekonany o czymś"]]},
+  {"english": [["disapprove of sth", "disapprove of something"]], "polish": [["nie pochwalać"]]},
+  {"english": [["grasp sth", "grasp something"]], "polish": [["rozumieć coś"]]},
+  {"english": [["have a go at sth", "have a go at something"]], "polish": [["spróbować czegoś"]]},
+  {"english": [["pride yourself in sth", "pride yourself in something"]], "polish": [["szczycić się czymś"]]},
+  {"english": [["regard sth as sth", "regard something as something"]], "polish": [["uważać coś za coś"]]},
+  {"english": [["take an interest in sth", "take an interest in something"]], "polish": [["zainteresować się czymś"]]},
+  {"english": [["take pride in sth", "take pride in something"]], "polish": [["szczycić się czymś"]]},
+  {"english": [["take risks"]], "polish": [["podejmować ryzyko"]]},
+  {"english": [["belief"]], "polish": [["przekonanie"]]},
+  {"english": [["betray"]], "polish": [["zdradzić"]]},
+  {"english": [["change your mind"]], "polish": [["zmienić zdanie"]]},
+  {"english": [["courage"]], "polish": [["odwaga"]]},
+  {"english": [["faith"]], "polish": [["wiara"]]},
+  {"english": [["friendship"]], "polish": [["przyjaźń"]]},
+  {"english": [["honesty"]], "polish": [["szczerość"]]},
+  {"english": [["ideal"]], "polish": [["ideał"]]},
+  {"english": [["loyalty"]], "polish": [["lojalność"]]},
+  {"english": [["moral standards"]], "polish": [["standardy moralne"]]},
+  {"english": [["realise"]], "polish": [["uświadomić sobie"]]},
+  {"english": [["self-respect"]], "polish": [["szacunek do samego siebie"]]},
+  {"english": [["tolerance"]], "polish": [["tolerancja"]]},
+  {"english": [["treat sb the same way"]], "polish": [["traktować kogoś tak samo"]]},
+  {"english": [["truth"]], "polish": [["prawda"]]},
+  {"english": [["value system"]], "polish": [["system wartości"]]},
+  {"english": [["wellness"]], "polish": [["dobrostan"]]},
+  {"english": [["keep an eye on sth", "keep an eye on something"]], "polish": [["koncentrować się na czymś"]]},
+  {"english": [["rebel against sth", "rebel against something"]], "polish": [["buntować się przeciwko czemuś"]]},
+  {"english": [["self-esteem"]], "polish": [["poczucie własnej wartości"]]},
+  {"english": [["approve of sb", "approve of somebody"]], "polish": [["aprobować kogoś"]]},
+  {"english": [["compromise"]], "polish": [["kompromis"]]},
+  {"english": [["discriminate against sb", "discriminate against somebody"]], "polish": [["dyskryminować kogoś"]]},
+  {"english": [["ethics"]], "polish": [["etyka"]]},
+  {"english": [["follow the rules"]], "polish": [["przestrzegać zasad"]]},
+  {"english": [["human rights"]], "polish": [["prawa człowieka"]]},
+  {"english": [["liberty"]], "polish": [["wolność"]]},
+  {"english": [["have a positive impact"]], "polish": [["wpływać pozytywnie"]]},
+  {"english": [["look down on sb", "look down on somebody"]], "polish": [["patrzeć na kogoś z góry"]]},
+  {"english": [["look up to sb", "look up to somebody"]], "polish": [["podziwiać kogoś"]]},
+  {"english": [["mentor"]], "polish": [["mentor"]]},
+  {"english": [["role model"]], "polish": [["wzór do naśladowania"]]},
+  {"english": [["set an example"]], "polish": [["dawać przykład"]]},
+  {"english": [["respect"]], "polish": [["szanować"]]},
+  {"english": [["achievement"]], "polish": [["osiągnięcie"]]},
+  {"english": [["aspire to sth", "aspire to something"]], "polish": [["dążyć do czegoś"]]},
+  {"english": [["philanthropist"]], "polish": [["filantrop"]]},
+  {"english": [["visionary"]], "polish": [["wizjoner"]]},
+  {"english": [["well-rounded"]], "polish": [["gruntownie wykształcony"]]},
+  {"english": [["have sth in common with sb", "have something in common with somebody"]], "polish": [["mieć z kimś coś wspólnego"]]},
+  {"english": [["relate to sb", "relate to somebody"]], "polish": [["rozumieć kogoś"]]},
+  {"english": [["set sb apart", "set somebody apart"]], "polish": [["odróżniać kogoś"]]},
+  {"english": [["share values"]], "polish": [["podzielać wartości"]]},
+  {"english": [["share views"]], "polish": [["podzielać poglądy"]]}
+
 ]
