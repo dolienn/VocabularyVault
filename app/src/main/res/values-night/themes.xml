@@ -3,5 +3,13 @@
     <style name="Base.Theme.VocabularyTest" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimaryDark">@color/white</item> <!-- pasek ikon -->
+        <item name="colorPrimary">@color/mainGreen</item>
+        <item name="colorOnSurface">@color/highlight</item> <!-- przy kliknieciu -->
+        <item name="colorSecondaryContainer">@color/highlight</item> <!-- navbar -->
+
+
+
     </style>
+
 </resources>

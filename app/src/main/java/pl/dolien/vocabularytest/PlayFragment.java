@@ -76,7 +76,7 @@ public class PlayFragment extends Fragment {
                     String userNameData = dataSnapshot.child("userName").getValue(String.class);
                     String userProfileData = dataSnapshot.child("userProfile").getValue(String.class);
 
-                    userName.setText(userNameData);
+                    usernameText.setText(userNameData);
                     Picasso.get().load(userProfileData).into(userAvatar);
                 }
             }
