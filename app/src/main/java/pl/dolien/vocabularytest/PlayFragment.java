@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlayFragment extends Fragment {
-    private TextView usernameText;
-    private String username;
-    private String email;
     private TextView userName;
     private CircleImageView userAvatar;
-    private FirebaseAuth auth;
     private FirebaseDatabase database;
 
     @Override
@@ -39,23 +32,17 @@ public class PlayFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_play, container, false);
 
         database = FirebaseDatabase.getInstance();
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         userName = view.findViewById(R.id.userName);
         userAvatar = view.findViewById(R.id.userAvatar);
-
         Button playButton = view.findViewById(R.id.playButton);
-        usernameText = view.findViewById(R.id.usernameText);
 
 
 
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Intent gameIntent = new Intent(getActivity(), GameActivity.class);
-                    startActivity(gameIntent);
-                    getActivity().finish();
-            }
+        playButton.setOnClickListener(v -> {
+                Intent gameIntent = new Intent(getActivity(), GameActivity.class);
+                startActivity(gameIntent);
         });
 
         if (auth.getCurrentUser() != null) {

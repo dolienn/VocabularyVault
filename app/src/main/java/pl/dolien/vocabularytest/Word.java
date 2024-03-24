@@ -8,8 +8,6 @@ import java.util.List;
 public class Word {
     private List<List<String>> english;
     private List<List<String>> polish;
-
-    // Konstruktor z adnotacją @JsonCreator
     @JsonCreator
     public Word(@JsonProperty("english") List<List<String>> english,
                 @JsonProperty("polish") List<List<String>> polish) {

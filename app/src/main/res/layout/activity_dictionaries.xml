@@ -15,7 +15,7 @@
         android:background="@drawable/transparent_button_background"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        />
+        android:contentDescription="@string/cancel_button_description" />
 
     <ListView
         android:id="@+id/listView"

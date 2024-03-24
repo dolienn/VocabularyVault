@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinalActivity">
+
+  <TextView
+      android:id="@+id/congratulationsText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/final_congratulations"
+      android:layout_marginTop="300dp"
+      android:minWidth="300dp"
+      android:textAlignment="center"
+      android:textSize="20sp"
+      android:layout_centerHorizontal="true"
+      />
+
+  <Button
+      android:id="@+id/backToMenuButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/final_back_to_menu_button"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="400dp"
+      />
+
+  </RelativeLayout>

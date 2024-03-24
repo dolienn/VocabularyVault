@@ -2,7 +2,6 @@ package pl.dolien.vocabularytest;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -26,15 +24,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignInActivity extends AppCompatActivity {
-    Button googleAuth;
-    FirebaseAuth auth;
-    FirebaseDatabase database;
-    private DatabaseReference mDatabase;
-    GoogleSignInClient mGoogleSignInClient;
+import java.util.Objects;
 
-    int RC_SIGN_IN = 20;
-    private boolean isLoggingOut = false;
+public class SignInActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
+    private DatabaseReference mDatabase;
+    private GoogleSignInClient mGoogleSignInClient;
+    private final int RC_SIGN_IN = 20;
 
 
     @Override
@@ -42,11 +38,10 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        googleAuth = findViewById(R.id.singInWithGoogle);
+        Button googleAuth = findViewById(R.id.singInWithGoogle);
 
         auth = FirebaseAuth.getInstance();
 
-        database = FirebaseDatabase.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -73,6 +68,7 @@ public class SignInActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        boolean isLoggingOut = false;
         if (!isLoggingOut) {
             if (requestCode == RC_SIGN_IN) {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -90,41 +86,35 @@ public class SignInActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                                FirebaseUser user = auth.getCurrentUser();
-                                AuthResult authResult = task.getResult();
-                                if (authResult != null && authResult.getAdditionalUserInfo() != null) {
-                                    boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                            FirebaseUser user = auth.getCurrentUser();
+                            AuthResult authResult = task.getResult();
+                            if (authResult != null && authResult.getAdditionalUserInfo() != null) {
+                                boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();
 
-                                    if (isNewUser) {
-                                        User userData = writeNewUser(user.getUid(), user.getDisplayName(), user.getPhotoUrl().toString(), 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,0,0,0,0,0);
-                                        mDatabase.child("users").child(user.getUid()).setValue(userData);
-                                        Toast.makeText(SignInActivity.this, "Nowy użytkownik zalogowany po raz pierwszy", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        // Użytkownik już wcześniej się zalogował
-                                        Toast.makeText(SignInActivity.this, "Użytkownik już wcześniej zalogowany", Toast.LENGTH_SHORT).show();
-                                    }
+                                if (isNewUser) {
+                                    assert user != null;
+                                    User userData = writeNewUser(user.getUid(), user.getDisplayName(), Objects.requireNonNull(user.getPhotoUrl()).toString(), 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,0,0,0,0,0);
+                                    mDatabase.child("users").child(user.getUid()).setValue(userData);
                                 }
+                            }
 
-
-                            Intent intent = new Intent(SignInActivity.this, NavbarActivity.class);
-                            startActivity(intent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(SignInActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
-                        }
+                        Intent intent = new Intent(SignInActivity.this, NavbarActivity.class);
+                        startActivity(intent);
+                    } else {
+                        // If sign in fails.
+                        Toast.makeText(SignInActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    public User writeNewUser(String userId, String userName, String userProfile,  int userBestScore_all_topics, int userBestScore_eighth_grade,
-                             int userBestScore_human, int userBestScore_home, int userBestScore_education,
-                             int userBestScore_job, int userBestScore_private_life, int userBestScore_nutrition,
-                             int userBestScore_shopping_and_services, int userBestScore_travel_and_tourism,
-                             int userBestScore_culture, int userBestScore_sport, int userBestScore_health,
+    public User writeNewUser(String userId, String userName, String userProfile,  int userBestScore_all_topics,
+                             int userBestScore_eighth_grade, int userBestScore_human, int userBestScore_home,
+                             int userBestScore_education, int userBestScore_job, int userBestScore_private_life,
+                             int userBestScore_nutrition, int userBestScore_shopping_and_services,
+                             int userBestScore_travel_and_tourism, int userBestScore_culture,
+                             int userBestScore_sport, int userBestScore_health,
                              int userBestScore_science_and_technology, int userBestScore_world_of_adventure,
                              int userBestScore_state_and_society) {
         User user = new User(userName, userProfile, userBestScore_all_topics, userBestScore_eighth_grade,

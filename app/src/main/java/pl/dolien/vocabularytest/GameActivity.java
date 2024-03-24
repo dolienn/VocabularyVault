@@ -27,31 +27,23 @@ import java.util.Random;
 import java.util.Set;
 
 public class GameActivity extends AppCompatActivity {
-    Random random = new Random();
-
-    Set<TranslationPair> usedTranslations = new HashSet<>();
-    TextView wordText;
-    EditText userAnswer;
-    Button acceptButton;
-    TextView correct;
-    TextView answers;
-    List<List<String>> wordSynonyms;
-    TextView scoreText;
-    TextView bestScoreText;
-    String defaultValue = "all_topics.json";
+    private final Random random = new Random();
+    private final Set<TranslationPair> usedTranslations = new HashSet<>();
+    private TextView wordText;
+    private EditText userAnswer;
+    private Button acceptButton;
+    private TextView correct;
+    private TextView answers;
+    private TextView scoreText;
+    private TextView bestScoreText;
     private String fileName;
     private int bestScore = 0;
-
     FirebaseAuth auth;
     FirebaseDatabase database;
-
-
     List<List<String>> correctTranslations;
-
-    int score = 0;
-    int randomIndex;
-    boolean gameOrCheck = true;
-    boolean multiAnswer = true;
+    private int score = 0;
+    private boolean gameOrCheck = true;
+    private boolean multiAnswer = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +55,7 @@ public class GameActivity extends AppCompatActivity {
 
         MyJsonReader myJsonReader = new MyJsonReader();
         SharedPreferences preferences = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE);
+        String defaultValue = "all_topics.json";
         fileName = preferences.getString("FILENAME", defaultValue);
         List<Word> words = myJsonReader.readJsonFile(this, fileName);
 
@@ -88,7 +81,7 @@ public class GameActivity extends AppCompatActivity {
                     gameOrCheck = true;
                 } else {
                     if (multiAnswer && correctTranslations.size() > 1) {
-                        multiplayCorrectTranslation();
+                        checkAnswers();
                     } else {
                         checkAnswer();
                         gameOrCheck = false;
@@ -103,14 +96,17 @@ public class GameActivity extends AppCompatActivity {
 
         userAnswer.setText("");
         userAnswer.setVisibility(View.VISIBLE);
-        acceptButton.setText("Accept");
+        acceptButton.setText(R.string.game_settext_accept);
         correct.setText("");
         multiAnswer=true;
 
 
         if(usedTranslations.size() < words.size()*2){
+            List<List<String>> wordSynonyms;
+            int randomIndex;
             do {
-                translationDirection = random.nextInt(2);
+                //translationDirection = random.nextInt(2);
+                translationDirection = 0;
 
                 randomIndex = random.nextInt(words.size());
 
@@ -132,7 +128,8 @@ public class GameActivity extends AppCompatActivity {
 
             wordText.setText(ListToStringConverter.listListToString(wordSynonyms));
         } else {
-            correct.setText("Congratulations");
+            Intent tryAgainIntent = new Intent(GameActivity.this, FinalActivity.class);
+            startActivity(tryAgainIntent);
         }
     }
 
@@ -140,8 +137,8 @@ public class GameActivity extends AppCompatActivity {
         boolean lose = false;
         for (List<String> translation : correctTranslations) {
             if (translation.contains(userAnswer.getText().toString().trim())) {
-                correct.setText("Poprawna odpowiedz");
-                acceptButton.setText("Generate");
+                correct.setText(R.string.game_settext_correct_answer);
+                acceptButton.setText(R.string.game_setext_generate_button);
                 score++;
                 scoreText.setText(String.valueOf(score));
                 bestOrNot();
@@ -158,13 +155,13 @@ public class GameActivity extends AppCompatActivity {
         userAnswer.setVisibility(View.INVISIBLE);
     }
 
-    public void multiplayCorrectTranslation(){
+    public void checkAnswers(){
         boolean lose = false;
         if (!correctTranslations.isEmpty()) {
             for (List<String> translation : correctTranslations) {
                 if (translation.contains(userAnswer.getText().toString().trim())) {
-                    correct.setText("Poprawna odpowiedz. Napisz alternatywe");
-                    acceptButton.setText("Accept");
+                    correct.setText(R.string.game_settext_correct_answer_AM);
+                    acceptButton.setText(R.string.game_settext_accept);
                     score++;
                     scoreText.setText(String.valueOf(score));
                     bestOrNot();
@@ -193,9 +190,10 @@ public class GameActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
-            Toast.makeText(this, "userBestScore_" + fileName.substring(0, fileName.length() - 5), Toast.LENGTH_SHORT).show();
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-                userRef.child("userBestScore_" + fileName.substring(0, fileName.length() - 5)).setValue(bestScore);
+                String scoreTopicName = "userBestScore_" + fileName.substring(0, fileName.length() - 5);
+
+                userRef.child(scoreTopicName).setValue(bestScore);
         }
 
         Intent tryAgainIntent = new Intent(GameActivity.this, TryAgainActivity.class);
@@ -220,13 +218,13 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(GameActivity.this, "userBestScore_" + fileName.substring(0, fileName.length() - 5), Toast.LENGTH_SHORT).show();
-                    String scoreTopicName = "userBestScore_" + fileName.substring(0, fileName.length() - 4);
-                    Integer bestScoreData = dataSnapshot.child("userBestScore_" + fileName.substring(0, fileName.length() - 5)).getValue(Integer.class);
+                    String scoreTopicName = "userBestScore_" + fileName.substring(0, fileName.length() - 5);
+                    Integer bestScoreData = dataSnapshot.child(scoreTopicName).getValue(Integer.class);
 
                     if(bestScoreData != null){
                         bestScore = bestScoreData;
                     }
+
                     bestScoreText.setText(String.valueOf(bestScore));
                 }
             }

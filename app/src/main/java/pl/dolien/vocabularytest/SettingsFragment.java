@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,7 +20,6 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         Button btn = view.findViewById(R.id.logoutButton);
-        ImageView profileImageView = view.findViewById(R.id.profilePicture); // Make sure to replace with the actual ImageView ID
 
 
         btn.setOnClickListener(v -> {

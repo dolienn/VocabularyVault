@@ -4,15 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class TranslationPair {
-    private List<List<String>> source;
-    private List<List<String>> target;
+    private final List<List<String>> source;
+    private final List<List<String>> target;
 
     public TranslationPair(List<List<String>> source, List<List<String>> target) {
         this.source = source;
         this.target = target;
     }
-
-    // Getters and setters (if needed)
 
     @Override
     public boolean equals(Object o) {

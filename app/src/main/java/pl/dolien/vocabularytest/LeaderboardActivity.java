@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -23,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class LeaderboardActivity extends AppCompatActivity {
-    private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private ListView listView;
     private ArrayList<String> userList;
@@ -32,22 +30,18 @@ public class LeaderboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
-        database = FirebaseDatabase.getInstance();
+        ImageButton cancelButton = findViewById(R.id.cancelButton);
+
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
         listView = findViewById(R.id.leaderboard);
         userList = new ArrayList<>();
 
-        ImageButton cancelButton = findViewById(R.id.cancelButton);
-
         showLeaderboard();
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent playActivityIntent = new Intent(LeaderboardActivity.this, NavbarActivity.class);
-                startActivity(playActivityIntent);
-                finish();
-            }
+        cancelButton.setOnClickListener(v -> {
+            Intent playActivityIntent = new Intent(LeaderboardActivity.this, NavbarActivity.class);
+            startActivity(playActivityIntent);
+            finish();
         });
     }
 
@@ -71,14 +65,13 @@ public class LeaderboardActivity extends AppCompatActivity {
                     userList.add(userNameData + "       " + userBestScoreData);
                 }
 
-                // Utwórz adapter i przypisz go do ListView
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(LeaderboardActivity.this, android.R.layout.simple_list_item_1, userList);
                 listView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Obsłuż błąd pobierania danych
+                // Handle error
                 Toast.makeText(LeaderboardActivity.this, "Failed to read value", Toast.LENGTH_SHORT).show();
             }
         });

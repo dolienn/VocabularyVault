@@ -20,9 +20,6 @@ public class User {
     public int userBestScore_world_of_adventure;
     public int userBestScore_state_and_society;
 
-    public User(){
-
-    }
 
     public User(String userName, String userProfile, int allTopics, int eighthGrade, int human, int home, int education,
                 int job, int privateLife, int nutrition, int shoppingAndServices,
@@ -47,21 +44,4 @@ public class User {
         this.userBestScore_world_of_adventure = worldOfAdventure;
         this.userBestScore_state_and_society = stateAndSociety;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(String userProfile) {
-        this.userProfile = userProfile;
-    }
-
 }
