@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="game_settext_accept">Accept</string>
-    <string name="game_settext_correct_answer">Correct answer!</string>
-    <string name="game_setext_generate_button">Generate</string>
-    <string name="game_settext_correct_answer_AM">Correct answer! Write another meaning of this word</string>
-    <string name="final_congratulations">Congratulations!</string>
-    <string name="final_back_to_menu_button">Back to Menu</string>
-</resources>

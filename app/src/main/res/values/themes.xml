@@ -3,6 +3,11 @@
     <style name="Base.Theme.VocabularyTest" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimaryDark">@color/black</item> <!-- pasek ikon -->
+        <item name="colorPrimary">@color/mainGreen</item>
+        <item name="colorOnSurface">@color/highlight</item> <!-- przy kliknieciu -->
+        <item name="colorSecondaryContainer">@color/mainGreen</item> <!-- navbar -->
+
     </style>
 
     <style name="Theme.VocabularyTest" parent="Base.Theme.VocabularyTest" />
