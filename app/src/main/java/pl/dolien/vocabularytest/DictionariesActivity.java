@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DictionariesActivity extends AppCompatActivity {
-    private final String[] fileNames = {"all_topics.json", "eighth_grade.json", "human.json", "home.json", "education.json", "job.json",
+    final String[] fileNames = {"all_topics.json", "eighth_grade.json", "human.json", "home.json", "education.json", "job.json",
                                 "private_life.json", "nutrition.json", "shopping_and_services.json", "travel_and_tourism", "culture.json",
                                 "sport.json", "health.json", "science_and_technology.json", "world_of_adventure.json", "state_and_society.json"};
 
@@ -23,7 +23,7 @@ public class DictionariesActivity extends AppCompatActivity {
             "private_life.json", "nutrition.json", "shopping_and_services.json", "travel_and_tourism", "culture.json",
             "sport.json", "health.json", "science_and_technology.json", "world_of_adventure.json", "state_and_society.json"};
     private final int dictionariesNumber = fileNames.length;
-    private MyJsonReader myJsonReader;
+    MyJsonReader myJsonReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class DictionariesActivity extends AppCompatActivity {
         });
     }
 
-    private class MyAdapter extends BaseAdapter {
+    class MyAdapter extends BaseAdapter {
         private final String[] fileNames;
 
         public MyAdapter(String[] fileNames) {

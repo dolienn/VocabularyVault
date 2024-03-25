@@ -45,7 +45,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         });
     }
 
-    private void showLeaderboard() {
+    void showLeaderboard() {
         Query recentPostsQuery = mDatabase.orderByChild("userBestScore");
         recentPostsQuery.addValueEventListener(new ValueEventListener() {
             @Override

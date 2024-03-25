@@ -29,9 +29,9 @@ import java.util.Set;
 public class GameActivity extends AppCompatActivity {
     private final Random random = new Random();
     private final Set<TranslationPair> usedTranslations = new HashSet<>();
-    private TextView wordText;
-    private EditText userAnswer;
-    private Button acceptButton;
+    TextView wordText;
+    EditText userAnswer;
+    Button acceptButton;
     private TextView correct;
     private TextView answers;
     private TextView scoreText;
